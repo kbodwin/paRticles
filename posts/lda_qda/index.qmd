@@ -1,9 +1,9 @@
 ---
-title: "1-D Illustration of LDA vs QDA"
+title: "1-D Illustration of LDA vs QDA with {distributional}"
 author: "Kelly Bodwin"
 date: "2024-07-20"
-categories: [code, analysis, packages]
-image: "./gganim_plot001.png"
+categories: [teaching, new packages]
+image: "./image.png"
 ---
 
 So, three things happened this week that inspired this tidbit:
@@ -17,6 +17,8 @@ So, three things happened this week that inspired this tidbit:
 So my goal here is to re-create those pictures as a gif.
 
 ```{r}
+#| message: false
+#| warning: false
 library(tidyverse)
 library(distributional)
 library(gganimate)

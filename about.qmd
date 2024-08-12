@@ -4,15 +4,15 @@ image: hexagon_particles.jpeg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
+    - icon: mastodon
+      text: Fosstodon
+      href: https://fosstodon.org/@kellybodwin
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://linkedin.com/in/kelly-bodwin-9009061a/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/kbodwin/paRticles
 
 ---
 

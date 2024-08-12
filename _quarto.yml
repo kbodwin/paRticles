@@ -6,11 +6,12 @@ website:
   title: "paRticles"
   navbar:
     right:
-      - about.qmd
+      - icon: mastodon
+        href: https://fosstodon.org/@kellybodwin
+      - icon: linkedin
+        href: https://linkedin.com/in/kelly-bodwin-9009061a/
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/kbodwin/paRticles
 format:
   html:
     theme: pulse
