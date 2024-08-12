@@ -1,0 +1,14 @@
+---
+title: "paRticles"
+description: "Quick, unpolished thoughts, discoveries, and ideas about all things R."
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: hexagon_particles.jpeg
+title-block-banner-color: "#FFF"
+---

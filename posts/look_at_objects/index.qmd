@@ -1,0 +1,83 @@
+---
+title: "Look at your objects"
+date: "2034-08-05"
+draft: true
+---
+
+Random thought today: There are a lot of ways to "check in" on your intermediate objects in R.
+
+![](behold my stuff)
+
+It's definitely good practice and something I have trouble pushing my students to do.  Maybe I need to be more deliberate about how to do it.
+
+
+So, there's the classic way of just printing it out.  This is fine.  I tend to peek at my objects this way, except I do the peeking in the console... I can NOT get my students to adopt a workflow that pops between notebook and console though.  Maybe it's not the best.
+
+```{r}
+bob <- 1:10
+bob
+```
+
+---
+
+I also see this in some folks' code:
+
+```{r}
+bob <- 1:10; bob
+```
+
+I especially see it in plotting with ggplot for some reason:
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+p <- ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(); p
+```
+
+I do not like this at all.  Perhaps it's a bias against semicolons, I thought I left those behind when I gave up on Java.  But I don't like the print statement being hidden on a line with code.
+
+---
+
+Now, a student taught me this trick, and I think it's super rad:
+
+```{r}
+(bob <- 1:10)
+```
+
+But it does get a bit inelegant/cumbersome with multiline code and pipelines in my opinion:
+
+```{r}
+(pen_ad <- penguins %>%
+  filter(species == "Adelie") %>%
+   summarize(mean(body_mass_g, na.rm = TRUE)))
+```
+
+---
+
+Speaking of pipelines, I'm on the fence about the best way to "check in" on progress of a long pipeline.  I tend to just highlight part of the pipeline and Cmd+Enter to run that section.  But that's kinda unreproducible and also gets annoying if I'm doing it many times.
+
+Students tend to delete or comment out segments of pipelines and I do NOT like this, it's so unwieldy.
+
+---
+
+`magrittr` has a cute pipe `%T>%` that means "do this next step but don't pass its results", which we can use in conjunction with `print()` to check stuff.
+
+It's almost perfect but the necessity of `print()` and the 
+
+```{r}
+library(magrittr)
+
+penguins %>%
+  filter(species == "Adelie") %T>%
+  print() %>%  
+  summarize(n_rows = n())
+         
+```
+
+(Honestly, I wish we in the tidyverse sphere used the other `magrittr` pipes more.  Maybe another mini-post one day...)
+
+---
+
+One option is to throw a `peek()` inside a pipeline...

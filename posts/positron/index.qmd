@@ -1,0 +1,45 @@
+---
+title: "First thoughts on Positron"
+author: "Kelly Bodwin"
+date: "2024-08-05"
+categories: [news, opinion]
+image: "positron_logo.png"
+---
+
+This is a very disorganized list of notes I made trying out Positron for the first time.  Hopefully some slightly more coherent updates will come along eventually as I use it more and/or it updates.
+
+**Working directories:** I thought I would hate the "open a folder" workflow (as opposed to opening a `.RProj`) but actually I'm vibing with it.  It's especially nice for one-off tasks, e.g. when I use R to calculate an exam curve.  I never quite liked choosing between a "floating" qmd or a one-time-use R Project.
+
+![Folders behave like projects.](./images/open_folder.png)
+
+That said, my work didn't "feel" like a project.  I like having all the RStudio windows open in my dock so I can project hop. Relatedly - I crash R all the time, and I like that it only crashes the instance I'm in; does using Positron mean that if I crash things, *all* my projects close?
+
+![RRRRRRRRRR](./images/pr.jpg)
+
+
+**Quarto:** The "new notebook" shortcut on the landing page makes a Jupyter doc not a Quarto doc.  Booo. Plus there's NO RENDER BUTTON for Quarto docs.  Ew. Worst,there's no inline preview option in Quarto yet, which is a major dealbreaker for now.  I'm told these things will be added; but for now Positron is not super optimized for Quarto.
+
+![This opens a new ipynb.](./images/new_notebook.png)
+
+
+**Chunks:** The chunk shortcut is different.  That's fine, I think it's PC/Mac consistent now.  I do like the drop-down language options when you add a chunk... except that after the first chunk I don't want to have to "confirm" my language choice every time. The "run this chunk" play button is IMHO better, although breaking my muscle memory has been hard.
+
+![Snazzy, but now I have to hit "enter" every time I make a new chunk.](./images/new_chunk.png)
+
+
+**Panes:** I don't like having the variables pane at the bottom, and then it disappears if you switch tabs at top. I like being able to see my environment at all times regardless of what help tab I'm in.
+
+![Now you see it...](./images/Variables_1.png)
+![...now you don't.](./images/Variables_2.png)
+
+
+
+
+**Files:** I like having notification badges for unsaved files.  It's also just a lot easier to navigate between files in general.
+
+![I love having the Explorer on the left!](./images/navigate_files.png)
+
+**Help:** The dynamic suggestions are cool... but floating helpers are in my way. I like the info but it's in my way enough that I would turn this off - I'd rather have some kind of permanent help text location in a corner that I can glance at when I need it.
+
+![It's just kind of an excessive amount of pop-up and it's blocking my pipeline.](./images/pop_up_help.png)
+

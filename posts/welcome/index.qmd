@@ -1,0 +1,15 @@
+---
+title: "paRticles"
+author: "Kelly Bodwin"
+date: "2024-07-13"
+categories: [news]
+image: "hexagon_particles.jpeg"
+---
+
+One of my resolutions right now is to be better about putting things out into the internet world, without feeling like they need to be polished or perfect or full of lots of content.
+
+I already have [a mostly unused blog](https://www.kelly-bodwin.com/blog) as well as [some long-form posts on other blogs](https://rdatatable-community.github.io/The-Raft/posts/2024-05-20-kelly_bodwin/) and I'll probably stick to those places when I manage to write things that are, you know, thorough and carefully edited over weeks.  But probably my favorite thing I've ever put out into the internet world is [this unhinged stream-of-consciousness](https://www.kelly-bodwin.com/blog/tidyeval/) about trying to learn NSE, and I want to get more comfortable with that kind of in-the-moment micro post.
+
+So: here is where I'll try to put quick ideas, discoveries, and little things that I figure out or think are cool. Welcome to paRticles!
+
+![](https://media.tenor.com/gluIOryzqFMAAAAM/confetti.gif)
