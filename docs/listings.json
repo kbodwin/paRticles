@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/positconf_quarto/index.html",
       "/posts/positron/index.html",
       "/posts/lda_qda/index.html",
       "/posts/welcome/index.html"

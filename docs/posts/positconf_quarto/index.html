@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Quick, unpolished thoughts, discoveries, and ideas about all things R.">
+<meta name="author" content="Kelly Bodwin">
+<meta name="dcterms.date" content="2024-08-14">
 
-<title>paRticles</title>
+<title>paRticles - Notes from Posit::conf session on Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,95 +68,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<style>
-
-      .quarto-title-block .quarto-title-banner h1,
-      .quarto-title-block .quarto-title-banner h2,
-      .quarto-title-block .quarto-title-banner h3,
-      .quarto-title-block .quarto-title-banner h4,
-      .quarto-title-block .quarto-title-banner h5,
-      .quarto-title-block .quarto-title-banner h6
-      {
-        color: #FFF;
-      }
-
-      .quarto-title-block .quarto-title-banner {
-        color: #FFF;
-background-image: url(hexagon_particles.jpeg);
-background-size: cover;
-      }
-</style>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">paRticles</span>
     </a>
   </div>
@@ -192,187 +115,118 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">paRticles</h1>
-                  <div>
-        <div class="description">
-          Quick, unpolished thoughts, discoveries, and ideas about all things R.
-        </div>
-      </div>
-                </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Notes from Posit::conf session on Quarto</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">conf</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kelly Bodwin </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 14, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="conf">conf <span class="quarto-category-count">(1)</span></div><div class="category" data-category="new packages">new packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div><div class="category" data-category="opinion">opinion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="teaching">teaching <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>I took so many notes for myself in this session I figured why not throw them on here!</p>
+<hr>
+<p>David Keyes: Making pretty reports</p>
+<ol type="1">
+<li>Create a layout with Typst.</li>
+</ol>
+<p>💡<code>report.qmd</code> -&gt; <code>typst-show.typ</code> passes variables from Quarto params to typst -&gt; <code>typst-template.typ</code> sets up report properties like fonts, colors, page margins, backgrounds. “grid” to control placements.</p>
+<ol start="2" type="1">
+<li>Use functions to make plots consistent.</li>
+</ol>
+<p>💡<code>ggplot</code> layering makes this nice</p>
+<pre><code>if (&lt;function input&gt;) p &lt;- p + &lt;layer option&gt;
+else p &lt;- p + &lt;different layer option&gt;</code></pre>
+<p>💡custom themes! But <code>geom_text()</code> etc are not impacted by themes, use <code>update_geom_defaults()</code></p>
+<p>🔗 <a href="rfor.us/posit2024slides">rfor.us/posit2024slides</a></p>
+<hr>
+<p>Mine Çetinkaya-Rundel: Books!</p>
+<ol type="1">
+<li>Multiple Outputs</li>
+</ol>
+<p>💡Put things in a fenced div (<code>:::</code>) -&gt; write scss to style it for html and put it as theme -&gt; write <code>style.tex</code> file to style it for latex/pdf and include it in header.</p>
+<p>💡“litter” your qmd file with LaTeX tags like \newpage tags, they will be ignored in html render. Use \index tags and separate tex, then \printindex at the end.</p>
+<ol start="2" type="1">
+<li>Accessibility/Reproducibility</li>
+</ol>
+<p>💡 Use <code>fig-alt</code> for alt text. <code>parsermd</code> to look for instances of <code>ggplot</code> that don’t have fig alt.</p>
+<p>💡 Set global options in <code>_common.R</code>.</p>
+<p>💡 Use Quarto’s announcement option in <code>_quarto.yml</code> to track status of WIP project/chapters.</p>
+<p>💡 Avoid <code>freeze</code>; re-run all code in GH Actions. 😱 Quarto Actions Repo!!!</p>
+<ol start="3" type="1">
+<li>Multilingual</li>
+</ol>
+<p>💡 Use “embed” shortcode to insert notebooks with different engines. 🤯</p>
+<p>🔗 <a href="bit.ly/books-conf24]">bit.ly/books-conf24</a></p>
+<hr>
+<p>Meghan Hall: templates</p>
+<p>💡 Start by tinkering with custom scss (reference as theme in <code>_quarto.yml</code>) and make use of custom divs!</p>
+<p>In qmd:</p>
+<pre><code>::: some-div-name
+text
+:::</code></pre>
+<p>In scss:</p>
+<pre><code>.some-div-name {
+&lt;css junk&gt;
+}</code></pre>
+<p>💡 “inspect” in browser and Mozilla web docs for css/html elements.</p>
+<p>💡 Put all this in an internal package, make it copy from inst to working directory and open qmd in editor.</p>
+<p>🤔 Internal package vs.&nbsp;template in RStudio vs quarto use template???</p>
+<hr>
+<p>Andrew Bray: scrollytelling</p>
+<p>💡 “closeread” Quarto extension</p>
+<pre><code>format: closeread-html
+
+::: {.cr-section}
+blah blah left sidebar blah
+
+@cr-thing
+
+:::{.cr-thing}
+stuff that should appear on the right at trigger point
+:::
+
+:::</code></pre>
+<p>💡 Can also add “focus effects” to “stickies” at trigger points. e.g.&nbsp;zooming in to pieces of an image, pan-to and scale-by</p>
+<pre><code>[@cr-thing]{pan-to=”70%,-10%” scale-by=”2”}</code></pre>
+<p>💡 Use the progression tracker (<code>crProgressBlock</code> OJS variable) in code to change the images as the user scrolls.</p>
+<p>🔗 <a href="https://github.com/andrewpbray/gg-close-read">Example</a></p>
+<hr>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="conf" data-listing-date-sort="1723618800000" data-listing-file-modified-sort="1723671314288" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="335">
-<div class="thumbnail">
-<p><a href="./posts/positconf_quarto/index.html" class="no-external"></a></p><a href="./posts/positconf_quarto/index.html" class="no-external">
-<p><img src="./posts/positconf_quarto" class="thumbnail-image"></p>
-</a><p><a href="./posts/positconf_quarto/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/positconf_quarto/index.html" class="no-external">Notes from Posit::conf session on Quarto</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/positconf_quarto/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('conf'); return false;">
-conf
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/positconf_quarto/index.html" class="no-external">I took so many notes for myself in this session I figured why not throw them on here!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/positconf_quarto/index.html" class="no-external">
-<div class="listing-date">
-Aug 14, 2024
-</div>
-<div class="listing-author">
-Kelly Bodwin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="news,opinion" data-listing-date-sort="1722841200000" data-listing-file-modified-sort="1723455915891" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="427">
-<div class="thumbnail">
-<p><a href="./posts/positron/index.html" class="no-external"></a></p><a href="./posts/positron/index.html" class="no-external">
-<p><img src="./posts/positron/positron_logo.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/positron/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/positron/index.html" class="no-external">First thoughts on Positron</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/positron/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('opinion'); return false;">
-opinion
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/positron/index.html" class="no-external">This is a very disorganized list of notes I made trying out Positron for the first time. Hopefully some slightly more coherent updates will come along eventually as I use it…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/positron/index.html" class="no-external">
-<div class="listing-date">
-Aug 5, 2024
-</div>
-<div class="listing-author">
-Kelly Bodwin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="teaching,new packages" data-listing-date-sort="1721458800000" data-listing-file-modified-sort="1723456851241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1489">
-<div class="thumbnail">
-<p><a href="./posts/lda_qda/index.html" class="no-external"></a></p><a href="./posts/lda_qda/index.html" class="no-external">
-<p><img src="./posts/lda_qda/image.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/lda_qda/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/lda_qda/index.html" class="no-external">1-D Illustration of LDA vs QDA with {distributional}</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/lda_qda/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('teaching'); return false;">
-teaching
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('new packages'); return false;">
-new packages
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/lda_qda/index.html" class="no-external">So, three things happened this week that inspired this tidbit:</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/lda_qda/index.html" class="no-external">
-<div class="listing-date">
-Jul 20, 2024
-</div>
-<div class="listing-author">
-Kelly Bodwin
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="news" data-listing-date-sort="1720854000000" data-listing-file-modified-sort="1723455387885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="133">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
-<p><img src="./posts/welcome/hexagon_particles.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">paRticles</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/welcome/index.html" class="no-external">One of my resolutions right now is to be better about putting things out into the internet world, without feeling like they need to be polished or perfect or full of lots of…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Jul 13, 2024
-</div>
-<div class="listing-author">
-Kelly Bodwin
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

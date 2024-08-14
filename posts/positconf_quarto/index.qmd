@@ -1,0 +1,123 @@
+---
+title: "Notes from Posit::conf session on Quarto"
+author: "Kelly Bodwin"
+date: "2024-08-14"
+categories: [conf]
+image: ""
+---
+
+I took so many notes for myself in this session I figured why not throw them on here!
+
+---
+
+David Keyes: Making pretty reports
+
+1. Create a layout with Typst. 
+
+💡`report.qmd` -> 
+`typst-show.typ` passes variables from Quarto params to typst -> 
+`typst-template.typ` sets up report properties like fonts, colors, page margins, backgrounds. "grid" to control placements.
+
+2. Use functions to make plots consistent.
+
+💡`ggplot` layering makes this nice
+
+```
+if (<function input>) p <- p + <layer option>
+else p <- p + <different layer option>
+```
+
+💡custom themes! But `geom_text()` etc are not impacted by themes, use `update_geom_defaults()`
+
+🔗 [rfor.us/posit2024slides](rfor.us/posit2024slides)
+
+---
+
+Mine Çetinkaya-Rundel: Books!
+
+1. Multiple Outputs
+
+💡Put things in a fenced div (`:::`) ->
+write scss to style it for html and put it as theme ->
+write `style.tex` file to style it for latex/pdf and include it in header.
+
+💡"litter" your qmd file with LaTeX tags like \\newpage tags, they will be ignored in html render. Use \\index tags and separate tex, then \\printindex at the end.
+
+2. Accessibility/Reproducibility
+
+💡 Use `fig-alt` for alt text. `parsermd` to look for instances of `ggplot` that don't have fig alt.
+
+💡 Set global options in `_common.R`.
+
+💡 Use Quarto's announcement option in `_quarto.yml` to track status of WIP project/chapters.
+
+💡 Avoid `freeze`; re-run all code in GH Actions. 😱 Quarto Actions Repo!!!
+
+3. Multilingual
+
+💡 Use "embed" shortcode to insert notebooks with different engines. 🤯
+
+🔗 [bit.ly/books-conf24](bit.ly/books-conf24])
+
+---
+
+Meghan Hall: templates
+
+
+💡 Start by tinkering with custom scss (reference as theme in `_quarto.yml`) and make use of custom divs!
+
+In qmd:
+
+```
+::: some-div-name
+text
+:::
+```
+
+In scss:
+
+```
+.some-div-name {
+<css junk>
+}
+```
+
+💡 "inspect" in browser and Mozilla web docs for css/html elements.
+
+💡 Put all this in an internal package, make it copy from inst to working directory and open qmd in editor.
+
+🤔 Internal package vs. template in RStudio vs quarto use template???
+
+---
+
+Andrew Bray: scrollytelling
+
+💡 “closeread” Quarto extension
+
+```
+format: closeread-html
+
+::: {.cr-section}
+blah blah left sidebar blah
+
+@cr-thing
+
+:::{.cr-thing}
+stuff that should appear on the right at trigger point
+:::
+
+:::
+```
+
+💡 Can also add “focus effects” to “stickies” at trigger points. e.g. zooming in to pieces of an image, pan-to and scale-by
+
+```
+[@cr-thing]{pan-to=”70%,-10%” scale-by=”2”}
+```
+
+
+💡 Use the progression tracker (`crProgressBlock` OJS variable) in code to change the images as the user scrolls.
+
+🔗 [Example](https://github.com/andrewpbray/gg-close-read)
+
+---
