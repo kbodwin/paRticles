@@ -3,22 +3,22 @@ title: "Notes from Posit::conf session on Quarto"
 author: "Kelly Bodwin"
 date: "2024-08-14"
 categories: [conf]
-image: ""
+image: "quarto_hex.png"
 ---
 
 I took so many notes for myself in this session I figured why not throw them on here!
 
 ---
 
-David Keyes: Making pretty reports
+### David Keyes: Making pretty reports
 
-1. Create a layout with Typst. 
+#### Create a layout with Typst. 
 
 💡`report.qmd` -> 
 `typst-show.typ` passes variables from Quarto params to typst -> 
 `typst-template.typ` sets up report properties like fonts, colors, page margins, backgrounds. "grid" to control placements.
 
-2. Use functions to make plots consistent.
+#### Use functions to make plots consistent.
 
 💡`ggplot` layering makes this nice
 
@@ -33,9 +33,9 @@ else p <- p + <different layer option>
 
 ---
 
-Mine Çetinkaya-Rundel: Books!
+### Mine Çetinkaya-Rundel: Books!
 
-1. Multiple Outputs
+#### Multiple Outputs
 
 💡Put things in a fenced div (`:::`) ->
 write scss to style it for html and put it as theme ->
@@ -43,7 +43,7 @@ write `style.tex` file to style it for latex/pdf and include it in header.
 
 💡"litter" your qmd file with LaTeX tags like \\newpage tags, they will be ignored in html render. Use \\index tags and separate tex, then \\printindex at the end.
 
-2. Accessibility/Reproducibility
+#### Accessibility/Reproducibility
 
 💡 Use `fig-alt` for alt text. `parsermd` to look for instances of `ggplot` that don't have fig alt.
 
@@ -53,7 +53,7 @@ write `style.tex` file to style it for latex/pdf and include it in header.
 
 💡 Avoid `freeze`; re-run all code in GH Actions. 😱 Quarto Actions Repo!!!
 
-3. Multilingual
+#### Multilingual
 
 💡 Use "embed" shortcode to insert notebooks with different engines. 🤯
 
@@ -61,7 +61,7 @@ write `style.tex` file to style it for latex/pdf and include it in header.
 
 ---
 
-Meghan Hall: templates
+### Meghan Hall: templates
 
 
 💡 Start by tinkering with custom scss (reference as theme in `_quarto.yml`) and make use of custom divs!
@@ -90,7 +90,7 @@ In scss:
 
 ---
 
-Andrew Bray: scrollytelling
+### Andrew Bray: scrollytelling
 
 💡 “closeread” Quarto extension
 

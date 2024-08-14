@@ -157,40 +157,45 @@ ul.task-list li input[type="checkbox"] {
 
 <p>I took so many notes for myself in this session I figured why not throw them on here!</p>
 <hr>
-<p>David Keyes: Making pretty reports</p>
-<ol type="1">
-<li>Create a layout with Typst.</li>
-</ol>
+<section id="david-keyes-making-pretty-reports" class="level3">
+<h3 class="anchored" data-anchor-id="david-keyes-making-pretty-reports">David Keyes: Making pretty reports</h3>
+<section id="create-a-layout-with-typst." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-layout-with-typst.">Create a layout with Typst.</h4>
 <p>💡<code>report.qmd</code> -&gt; <code>typst-show.typ</code> passes variables from Quarto params to typst -&gt; <code>typst-template.typ</code> sets up report properties like fonts, colors, page margins, backgrounds. “grid” to control placements.</p>
-<ol start="2" type="1">
-<li>Use functions to make plots consistent.</li>
-</ol>
+</section>
+<section id="use-functions-to-make-plots-consistent." class="level4">
+<h4 class="anchored" data-anchor-id="use-functions-to-make-plots-consistent.">Use functions to make plots consistent.</h4>
 <p>💡<code>ggplot</code> layering makes this nice</p>
 <pre><code>if (&lt;function input&gt;) p &lt;- p + &lt;layer option&gt;
 else p &lt;- p + &lt;different layer option&gt;</code></pre>
 <p>💡custom themes! But <code>geom_text()</code> etc are not impacted by themes, use <code>update_geom_defaults()</code></p>
 <p>🔗 <a href="rfor.us/posit2024slides">rfor.us/posit2024slides</a></p>
 <hr>
-<p>Mine Çetinkaya-Rundel: Books!</p>
-<ol type="1">
-<li>Multiple Outputs</li>
-</ol>
+</section>
+</section>
+<section id="mine-çetinkaya-rundel-books" class="level3">
+<h3 class="anchored" data-anchor-id="mine-çetinkaya-rundel-books">Mine Çetinkaya-Rundel: Books!</h3>
+<section id="multiple-outputs" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-outputs">Multiple Outputs</h4>
 <p>💡Put things in a fenced div (<code>:::</code>) -&gt; write scss to style it for html and put it as theme -&gt; write <code>style.tex</code> file to style it for latex/pdf and include it in header.</p>
 <p>💡“litter” your qmd file with LaTeX tags like \newpage tags, they will be ignored in html render. Use \index tags and separate tex, then \printindex at the end.</p>
-<ol start="2" type="1">
-<li>Accessibility/Reproducibility</li>
-</ol>
+</section>
+<section id="accessibilityreproducibility" class="level4">
+<h4 class="anchored" data-anchor-id="accessibilityreproducibility">Accessibility/Reproducibility</h4>
 <p>💡 Use <code>fig-alt</code> for alt text. <code>parsermd</code> to look for instances of <code>ggplot</code> that don’t have fig alt.</p>
 <p>💡 Set global options in <code>_common.R</code>.</p>
 <p>💡 Use Quarto’s announcement option in <code>_quarto.yml</code> to track status of WIP project/chapters.</p>
 <p>💡 Avoid <code>freeze</code>; re-run all code in GH Actions. 😱 Quarto Actions Repo!!!</p>
-<ol start="3" type="1">
-<li>Multilingual</li>
-</ol>
+</section>
+<section id="multilingual" class="level4">
+<h4 class="anchored" data-anchor-id="multilingual">Multilingual</h4>
 <p>💡 Use “embed” shortcode to insert notebooks with different engines. 🤯</p>
 <p>🔗 <a href="bit.ly/books-conf24]">bit.ly/books-conf24</a></p>
 <hr>
-<p>Meghan Hall: templates</p>
+</section>
+</section>
+<section id="meghan-hall-templates" class="level3">
+<h3 class="anchored" data-anchor-id="meghan-hall-templates">Meghan Hall: templates</h3>
 <p>💡 Start by tinkering with custom scss (reference as theme in <code>_quarto.yml</code>) and make use of custom divs!</p>
 <p>In qmd:</p>
 <pre><code>::: some-div-name
@@ -204,7 +209,9 @@ text
 <p>💡 Put all this in an internal package, make it copy from inst to working directory and open qmd in editor.</p>
 <p>🤔 Internal package vs.&nbsp;template in RStudio vs quarto use template???</p>
 <hr>
-<p>Andrew Bray: scrollytelling</p>
+</section>
+<section id="andrew-bray-scrollytelling" class="level3">
+<h3 class="anchored" data-anchor-id="andrew-bray-scrollytelling">Andrew Bray: scrollytelling</h3>
 <p>💡 “closeread” Quarto extension</p>
 <pre><code>format: closeread-html
 
@@ -225,6 +232,7 @@ stuff that should appear on the right at trigger point
 <hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
