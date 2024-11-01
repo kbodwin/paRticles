@@ -1,5 +1,6 @@
 ---
 title: "Look at your objects"
+author: "Kelly Bodwin"
 date: "2024-10-31"
 draft: false
 categories: [random]
