@@ -1,7 +1,8 @@
 ---
 title: "Posit::conf Top 10"
 author: "Kelly Bodwin"
-date: "2024-08-16"
+date: "2024-11-01"
+draft: true
 categories: [conf]
 image: "quarto_hex.png"
 ---

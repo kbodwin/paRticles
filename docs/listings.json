@@ -2,13 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/look_at_objects/index.html",
-      "/posts/2024-09-03-apps/index.html",
-      "/posts/2024-08-16-positconf/index.html",
-      "/posts/positconf_quarto/index.html",
-      "/posts/positron/index.html",
-      "/posts/lda_qda/index.html",
-      "/posts/welcome/index.html"
+      "/posts/2024-10-31-look_at_objects/index.html",
+      "/posts/2024-08-14-positconf_quarto/index.html",
+      "/posts/2024-08-05-positron/index.html",
+      "/posts/2024-07-20-lda_qda/index.html",
+      "/posts/2024-07-13-welcome/index.html"
     ]
   }
 ]
