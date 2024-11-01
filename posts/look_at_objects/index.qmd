@@ -1,12 +1,17 @@
 ---
 title: "Look at your objects"
-date: "2034-08-05"
-draft: true
+date: "2024-10-31"
+draft: false
+categories: [random]
+execute:
+  warning: false
+  message: false
+image: "magnifying.jpeg"
 ---
 
 Random thought today: There are a lot of ways to "check in" on your intermediate objects in R.
 
-![](behold my stuff)
+![](https://media1.tenor.com/m/sozJDHTslpEAAAAd/behold-stuff.gif)
 
 It's definitely good practice and something I have trouble pushing my students to do.  Maybe I need to be more deliberate about how to do it.
 
@@ -19,6 +24,8 @@ bob
 ```
 
 ---
+
+### Semicolons
 
 I also see this in some folks' code:
 
@@ -38,7 +45,8 @@ p <- ggplot(penguins, aes(x = body_mass_g)) +
 
 I do not like this at all.  Perhaps it's a bias against semicolons, I thought I left those behind when I gave up on Java.  But I don't like the print statement being hidden on a line with code.
 
----
+
+### Parentheses
 
 Now, a student taught me this trick, and I think it's super rad:
 
@@ -54,17 +62,19 @@ But it does get a bit inelegant/cumbersome with multiline code and pipelines in 
    summarize(mean(body_mass_g, na.rm = TRUE)))
 ```
 
----
+
+## Looking Inside Pipelines
 
 Speaking of pipelines, I'm on the fence about the best way to "check in" on progress of a long pipeline.  I tend to just highlight part of the pipeline and Cmd+Enter to run that section.  But that's kinda unreproducible and also gets annoying if I'm doing it many times.
 
 Students tend to delete or comment out segments of pipelines and I do NOT like this, it's so unwieldy.
 
----
+
+### Using the "passthrough" pipe
 
 `magrittr` has a cute pipe `%T>%` that means "do this next step but don't pass its results", which we can use in conjunction with `print()` to check stuff.
 
-It's almost perfect but the necessity of `print()` and the 
+It's almost perfect but the necessity of `print()` and the subtlety of the `%T>%` pipe (it's easy to miss) annoy me a bit.
 
 ```{r}
 library(magrittr)
@@ -78,6 +88,44 @@ penguins %>%
 
 (Honestly, I wish we in the tidyverse sphere used the other `magrittr` pipes more.  Maybe another mini-post one day...)
 
----
 
-One option is to throw a `peek()` inside a pipeline...
+### Summary functions that return `x`
+
+Finally, you might just use `glimpse()` in a pipeline, since it invisibly returns the data frame as well as printing a summary, so it can flow through the pipeline:
+
+```{r}
+penguins %>%
+  filter(species == "Adelie") %>%
+  glimpse() %>%  
+  summarize(n_rows = n())
+```
+
+My problem here is simply that I don't love `glimpse()`... if I'm verifying a pipeline step, I'd rather just see the raw data.
+
+Googling around lead me to `textreadr::peek()`, which seems to be exactly that: 
+
+```{r}
+# remotes::install("trinker/textreadr")
+library(textreadr)
+
+penguins %>%
+  filter(species == "Adelie") %>%
+  peek() %>%  
+  summarize(n_rows = n())
+```
+
+It's not on CRAN anymore (sadface).  Also, tibbles get downgraded to data.frames.  But still, I like this a lot.
+
+## Conclusion
+
+So, no perfect solution for pipelines that I know of.  And all these options will also print their output in a rendered qmd/Rmd - so they have the same issue as *print debugging* in that you have to remember to go back and remove code when you are finished developing.
+
+I think my personal wishlist would be, in no particular order:
+
+* A `dplyr::peek()` function.
+
+* A "print and pass" pipe that could be used in a pipeline without needing a function.
+
+* Some kind of interactive tool in Quarto that would let you flag lines to be previewed upon chunk run, without them being printed in a rendered doc.
+
+Thoughts?  Ideas?

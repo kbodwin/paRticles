@@ -1,0 +1,77 @@
+---
+title: "Posit::conf Top 10"
+author: "Kelly Bodwin"
+date: "2024-08-16"
+categories: [conf]
+image: "quarto_hex.png"
+---
+
+I'm on my flight away from Seattle, and I'm using the time to count down my top 10 favorite things from Posit::conf(2024)!
+
+---
+
+**Top things I am excited to try:**
+
+10. Scrollytelling
+
+9. AI for teaching materials
+
+8. Allen Downey's writing
+
+7. ChatGPT for plot interpretation
+
+6. {duckdb}
+
+5. {parquet}
+
+4. Positron
+
+3. bslib
+
+2. Custom divs
+
+1. WebR
+
+shannon's thing
+polars
+
+
+### 10.
+
+### 9.
+
+### 8.
+
+### 7.
+
+### 6.
+
+### 5.
+
+### 4.
+
+### 3.
+
+### 2.
+
+### 1.
+
+---
+
+**Top 5 favorite moments:**
+
+1. "I'd recognize that logo anywhere!"
+
+2. Oath in my talk
+
+3. Plotnine hex and hasan
+
+4. Joe Cheng on the floor
+
+5. Data table bags
+
+6. DevDay
+
+7. Allison was there
+
+8. 

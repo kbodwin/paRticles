@@ -1,0 +1,17 @@
+---
+title: "Shiny Apps remake"
+author: "Kelly Bodwin"
+date: "2024-09-03"
+categories: [shiny, education]
+image: "quarto_hex.png"
+---
+
+## Golem
+
+* Creates a package like `usethis` does
+
+* Puts the app in the `inst/` folder.  For multiple apps I'll need to make subfolders probably.
+
+## {bslib}
+
+## webR

@@ -39,6 +39,62 @@
     "href": "index.html",
     "title": "paRticles",
     "section": "",
-    "text": "Notes from Posit::conf session on Quarto\n\n\n\n\n\n\nconf\n\n\n\n\n\n\n\n\n\nAug 14, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\nFirst thoughts on Positron\n\n\n\n\n\n\nnews\n\n\nopinion\n\n\n\n\n\n\n\n\n\nAug 5, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\n1-D Illustration of LDA vs QDA with {distributional}\n\n\n\n\n\n\nteaching\n\n\nnew packages\n\n\n\n\n\n\n\n\n\nJul 20, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\npaRticles\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJul 13, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\nNo matching items"
+    "text": "Look at your objects\n\n\n\n\n\n\nrandom\n\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nShiny Apps remake\n\n\n\n\n\n\nshiny\n\n\neducation\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\nPosit::conf Top 10\n\n\n\n\n\n\nconf\n\n\n\n\n\n\n\n\n\nAug 16, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\nNotes from Posit::conf session on Quarto\n\n\n\n\n\n\nconf\n\n\n\n\n\n\n\n\n\nAug 14, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\nFirst thoughts on Positron\n\n\n\n\n\n\nnews\n\n\nopinion\n\n\n\n\n\n\n\n\n\nAug 5, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\n1-D Illustration of LDA vs QDA with {distributional}\n\n\n\n\n\n\nteaching\n\n\nnew packages\n\n\n\n\n\n\n\n\n\nJul 20, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\n\n\n\n\n\n\npaRticles\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJul 13, 2024\n\n\nKelly Bodwin\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2024-09-03-apps/index.html",
+    "href": "posts/2024-09-03-apps/index.html",
+    "title": "Shiny Apps remake",
+    "section": "",
+    "text": "Creates a package like usethis does\nPuts the app in the inst/ folder. For multiple apps I’ll need to make subfolders probably."
+  },
+  {
+    "objectID": "posts/2024-09-03-apps/index.html#golem",
+    "href": "posts/2024-09-03-apps/index.html#golem",
+    "title": "Shiny Apps remake",
+    "section": "",
+    "text": "Creates a package like usethis does\nPuts the app in the inst/ folder. For multiple apps I’ll need to make subfolders probably."
+  },
+  {
+    "objectID": "posts/2024-09-03-apps/index.html#bslib",
+    "href": "posts/2024-09-03-apps/index.html#bslib",
+    "title": "Shiny Apps remake",
+    "section": "{bslib}",
+    "text": "{bslib}"
+  },
+  {
+    "objectID": "posts/2024-09-03-apps/index.html#webr",
+    "href": "posts/2024-09-03-apps/index.html#webr",
+    "title": "Shiny Apps remake",
+    "section": "webR",
+    "text": "webR"
+  },
+  {
+    "objectID": "posts/2024-08-16-positconf/index.html",
+    "href": "posts/2024-08-16-positconf/index.html",
+    "title": "Posit::conf Top 10",
+    "section": "",
+    "text": "I’m on my flight away from Seattle, and I’m using the time to count down my top 10 favorite things from Posit::conf(2024)!\n\nTop things I am excited to try:\n\nScrollytelling\nAI for teaching materials\nAllen Downey’s writing\nChatGPT for plot interpretation\n{duckdb}\n{parquet}\nPositron\nbslib\nCustom divs\nWebR\n\nshannon’s thing polars\n\n10.\n\n\n9.\n\n\n8.\n\n\n7.\n\n\n6.\n\n\n5.\n\n\n4.\n\n\n3.\n\n\n2.\n\n\n1.\n\nTop 5 favorite moments:\n\n“I’d recognize that logo anywhere!”\nOath in my talk\nPlotnine hex and hasan\nJoe Cheng on the floor\nData table bags\nDevDay\nAllison was there"
+  },
+  {
+    "objectID": "posts/look_at_objects/index.html",
+    "href": "posts/look_at_objects/index.html",
+    "title": "Look at your objects",
+    "section": "",
+    "text": "Random thought today: There are a lot of ways to “check in” on your intermediate objects in R.\nIt’s definitely good practice and something I have trouble pushing my students to do. Maybe I need to be more deliberate about how to do it.\nSo, there’s the classic way of just printing it out. This is fine. I tend to peek at my objects this way, except I do the peeking in the console… I can NOT get my students to adopt a workflow that pops between notebook and console though. Maybe it’s not the best.\nbob &lt;- 1:10\nbob\n\n [1]  1  2  3  4  5  6  7  8  9 10"
+  },
+  {
+    "objectID": "posts/look_at_objects/index.html#looking-inside-pipelines",
+    "href": "posts/look_at_objects/index.html#looking-inside-pipelines",
+    "title": "Look at your objects",
+    "section": "Looking Inside Pipelines",
+    "text": "Looking Inside Pipelines\nSpeaking of pipelines, I’m on the fence about the best way to “check in” on progress of a long pipeline. I tend to just highlight part of the pipeline and Cmd+Enter to run that section. But that’s kinda unreproducible and also gets annoying if I’m doing it many times.\nStudents tend to delete or comment out segments of pipelines and I do NOT like this, it’s so unwieldy.\n\nUsing the “passthrough” pipe\nmagrittr has a cute pipe %T&gt;% that means “do this next step but don’t pass its results”, which we can use in conjunction with print() to check stuff.\nIt’s almost perfect but the necessity of print() and the subtlety of the %T&gt;% pipe (it’s easy to miss) annoy me a bit.\n\nlibrary(magrittr)\n\npenguins %&gt;%\n  filter(species == \"Adelie\") %T&gt;%\n  print() %&gt;%  \n  summarize(n_rows = n())\n\n# A tibble: 152 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 142 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n# A tibble: 1 × 1\n  n_rows\n   &lt;int&gt;\n1    152\n\n\n(Honestly, I wish we in the tidyverse sphere used the other magrittr pipes more. Maybe another mini-post one day…)\n\n\nSummary functions that return x\nFinally, you might just use glimpse() in a pipeline, since it invisibly returns the data frame as well as printing a summary, so it can flow through the pipeline:\n\npenguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  glimpse() %&gt;%  \n  summarize(n_rows = n())\n\nRows: 152\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n\n\n# A tibble: 1 × 1\n  n_rows\n   &lt;int&gt;\n1    152\n\n\nMy problem here is simply that I don’t love glimpse()… if I’m verifying a pipeline step, I’d rather just see the raw data.\nGoogling around lead me to textreadr::peek(), which seems to be exactly that:\n\n# remotes::install(\"trinker/textreadr\")\nlibrary(textreadr)\n\npenguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  peek() %&gt;%  \n  summarize(n_rows = n())\n\nTable: [152 x 8]\n\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year\n1  Adelie  Torgersen 39.1           18.7          181               3750        male   2007\n2  Adelie  Torgersen 39.5           17.4          186               3800        female 2007\n3  Adelie  Torgersen 40.3           18            195               3250        female 2007\n4  Adelie  Torgersen &lt;NA&gt;           &lt;NA&gt;          &lt;NA&gt;              &lt;NA&gt;        &lt;NA&gt;   2007\n5  Adelie  Torgersen 36.7           19.3          193               3450        female 2007\n6  Adelie  Torgersen 39.3           20.6          190               3650        male   2007\n7  Adelie  Torgersen 38.9           17.8          181               3625        female 2007\n8  Adelie  Torgersen 39.2           19.6          195               4675        male   2007\n9  Adelie  Torgersen 34.1           18.1          193               3475        &lt;NA&gt;   2007\n10 Adelie  Torgersen 42             20.2          190               4250        &lt;NA&gt;   2007\n.. ...     ...       ...            ...           ...               ...         ...    ...  \n\n\n# A tibble: 1 × 1\n  n_rows\n   &lt;int&gt;\n1    152\n\n\nIt’s not on CRAN anymore (sadface). Also, tibbles get downgraded to data.frames. But still, I like this a lot."
+  },
+  {
+    "objectID": "posts/look_at_objects/index.html#conclusion",
+    "href": "posts/look_at_objects/index.html#conclusion",
+    "title": "Look at your objects",
+    "section": "Conclusion",
+    "text": "Conclusion\nSo, no perfect solution for pipelines that I know of. And all these options will also print their output in a rendered qmd/Rmd - so they have the same issue as print debugging in that you have to remember to go back and remove code when you are finished developing.\nI think my personal wishlist would be, in no particular order:\n\nA dplyr::peek() function.\nA “print and pass” pipe that could be used in a pipeline without needing a function.\nSome kind of interactive tool in Quarto that would let you flag lines to be previewed upon chunk run, without them being printed in a rendered doc.\n\nThoughts? Ideas?"
   }
 ]
