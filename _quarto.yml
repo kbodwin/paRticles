@@ -3,6 +3,9 @@ project:
   output-dir: docs
 
 website:
+  comments:
+    giscus:
+      repo: kbodwin/paRticles
   title: "paRticles"
   navbar:
     right:
@@ -12,10 +15,9 @@ website:
         href: https://linkedin.com/in/kelly-bodwin-9009061a/
       - icon: github
         href: https://github.com/kbodwin/paRticles
+
 format:
   html:
     theme: pulse
     css: styles.css
-
-
 
