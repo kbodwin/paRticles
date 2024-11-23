@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kelly Bodwin">
-<meta name="dcterms.date" content="2024-08-14">
+<meta name="dcterms.date" content="2024-11-22">
 
-<title>paRticles - Notes from Posit::conf session on Quarto</title>
+<title>paRticles - Move your aes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -116,9 +150,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Notes from Posit::conf session on Quarto</h1>
+      <h1 class="title">Move your <code>aes</code></h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">conf</div>
+                <div class="quarto-category">opinion</div>
               </div>
                   </div>
   </div>
@@ -136,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 14, 2024</p>
+        <p class="date">November 22, 2024</p>
       </div>
     </div>
     
@@ -155,81 +189,164 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>I took so many notes for myself in this session I figured why not throw them on here!</p>
-<hr>
-<section id="david-keyes-making-pretty-reports" class="level3">
-<h3 class="anchored" data-anchor-id="david-keyes-making-pretty-reports">David Keyes: Making pretty reports</h3>
-<section id="create-a-layout-with-typst." class="level4">
-<h4 class="anchored" data-anchor-id="create-a-layout-with-typst.">Create a layout with Typst.</h4>
-<p>💡<code>report.qmd</code> -&gt; <code>typst-show.typ</code> passes variables from Quarto params to typst -&gt; <code>typst-template.typ</code> sets up report properties like fonts, colors, page margins, backgrounds. “grid” to control placements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’m taking a second here to expand on <a href="https://bsky.app/profile/jeremy-data.bsky.social/post/3lazetuczcj2z">this interesting little discussion on BlueSky</a>, about where to put the <code>aes</code> in a <code>ggplot</code>.</p>
+<p>Basically, the question boils down to:</p>
+<p><strong>Option A: <code>aes</code> inside <code>ggplot()</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Option B: <code>aes</code> inside <code>geom_*()</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> bill_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Option C: <code>aes</code> outside <code>ggplot()</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> bill_length_mm) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I think for most of of, Option A “looks right”. Probably this is because it’s more frequently taught that way, such as in <a href="https://r4ds.hadley.nz/data-visualize">R for Data Science</a>.</p>
+<p>Actually, in R4DS they also name the argument, i.e., <code>mapping = aes(...)</code>, but that’s a whole other can of worms that I’m going to ignore for now.</p>
+<p>Anyways, I’m going to argue for <strong>Option C</strong> for two reasons:</p>
+<section id="the-code-matches-the-sentence-structure-of-the-grammar-of-graphics." class="level3">
+<h3 class="anchored" data-anchor-id="the-code-matches-the-sentence-structure-of-the-grammar-of-graphics.">1. The code matches the sentence structure of the Grammar of Graphics.</h3>
+<p>Teaching the <code>ggplot</code> alongside the Grammar of Graphics is super fun, because it provides such a well-structured framework for students to think about a visualization problem. We’ll usually show an image like this to explain the idea of <em>layers</em>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://r.qcbs.ca/workshop03/book-en/images/gglayers.png" class="img-fluid figure-img"></p>
+<figcaption>source: https://r.qcbs.ca/workshop03/book-en/grammar-of-graphics-gg-basics.html</figcaption>
+</figure>
+</div>
+<p>And it’s so lovely because we can say “Every time you add a new layer, you <code>+</code> it on to the plot!</p>
+<p>But then when we show them the code in <strong>Option A</strong> or <strong>Option B</strong>, there’s some cognitive dissonance because the <code>aes</code> is not, in fact, being <code>+</code>’ed.</p>
+<p>I think the most GG-consistent way to do it would be to even omit the pipe, so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> bill_length_mm) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>data + mapping + geometry</strong> = consistent and clear!</p>
 </section>
-<section id="use-functions-to-make-plots-consistent." class="level4">
-<h4 class="anchored" data-anchor-id="use-functions-to-make-plots-consistent.">Use functions to make plots consistent.</h4>
-<p>💡<code>ggplot</code> layering makes this nice</p>
-<pre><code>if (&lt;function input&gt;) p &lt;- p + &lt;layer option&gt;
-else p &lt;- p + &lt;different layer option&gt;</code></pre>
-<p>💡custom themes! But <code>geom_text()</code> etc are not impacted by themes, use <code>update_geom_defaults()</code></p>
-<p>🔗 <a href="rfor.us/posit2024slides">rfor.us/posit2024slides</a></p>
-<hr>
+<section id="it-is-easier-to-understand-mapping-inheritance." class="level3">
+<h3 class="anchored" data-anchor-id="it-is-easier-to-understand-mapping-inheritance.">2. It is easier to understand mapping inheritance.</h3>
+<p>I will wager that every single one of us who has taught <code>ggplot</code> to beginners has run into a question like this:</p>
+<blockquote class="blockquote">
+<p>How do I color the points without making separate lines?</p>
+</blockquote>
+<p>and their code looks like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> species)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I think this use case immediately gives both the pros and the cons of <strong>Option B:</strong></p>
+<p>putting <code>aes</code> in the <code>geom</code> makes it crystal clear that those two are tied to each other… but at the cost of a lot of duplication rather than inheriting a global mapping.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> bill_length_mm),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So, to me, <strong>Option C</strong> is the best solution: we’ve already established our main mapping, and now we’re going to layer additional mappings on with geoms.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> bill_length_mm) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-</section>
-<section id="mine-çetinkaya-rundel-books" class="level3">
-<h3 class="anchored" data-anchor-id="mine-çetinkaya-rundel-books">Mine Çetinkaya-Rundel: Books!</h3>
-<section id="multiple-outputs" class="level4">
-<h4 class="anchored" data-anchor-id="multiple-outputs">Multiple Outputs</h4>
-<p>💡Put things in a fenced div (<code>:::</code>) -&gt; write scss to style it for html and put it as theme -&gt; write <code>style.tex</code> file to style it for latex/pdf and include it in header.</p>
-<p>💡“litter” your qmd file with LaTeX tags like \newpage tags, they will be ignored in html render. Use \index tags and separate tex, then \printindex at the end.</p>
-</section>
-<section id="accessibilityreproducibility" class="level4">
-<h4 class="anchored" data-anchor-id="accessibilityreproducibility">Accessibility/Reproducibility</h4>
-<p>💡 Use <code>fig-alt</code> for alt text. <code>parsermd</code> to look for instances of <code>ggplot</code> that don’t have fig alt.</p>
-<p>💡 Set global options in <code>_common.R</code>.</p>
-<p>💡 Use Quarto’s announcement option in <code>_quarto.yml</code> to track status of WIP project/chapters.</p>
-<p>💡 Avoid <code>freeze</code>; re-run all code in GH Actions. 😱 Quarto Actions Repo!!!</p>
-</section>
-<section id="multilingual" class="level4">
-<h4 class="anchored" data-anchor-id="multilingual">Multilingual</h4>
-<p>💡 Use “embed” shortcode to insert notebooks with different engines. 🤯</p>
-<p>🔗 <a href="bit.ly/books-conf24]">bit.ly/books-conf24</a></p>
-<hr>
-</section>
-</section>
-<section id="meghan-hall-templates" class="level3">
-<h3 class="anchored" data-anchor-id="meghan-hall-templates">Meghan Hall: templates</h3>
-<p>💡 Start by tinkering with custom scss (reference as theme in <code>_quarto.yml</code>) and make use of custom divs!</p>
-<p>In qmd:</p>
-<pre><code>::: some-div-name
-text
-:::</code></pre>
-<p>In scss:</p>
-<pre><code>.some-div-name {
-&lt;css junk&gt;
-}</code></pre>
-<p>💡 “inspect” in browser and Mozilla web docs for css/html elements.</p>
-<p>💡 Put all this in an internal package, make it copy from inst to working directory and open qmd in editor.</p>
-<p>🤔 Internal package vs.&nbsp;template in RStudio vs quarto use template???</p>
-<hr>
-</section>
-<section id="andrew-bray-scrollytelling" class="level3">
-<h3 class="anchored" data-anchor-id="andrew-bray-scrollytelling">Andrew Bray: scrollytelling</h3>
-<p>💡 “closeread” Quarto extension</p>
-<pre><code>format: closeread-html
-
-::: {.cr-section}
-blah blah left sidebar blah
-
-@cr-thing
-
-:::{.cr-thing}
-stuff that should appear on the right at trigger point
-:::
-
-:::</code></pre>
-<p>💡 Can also add “focus effects” to “stickies” at trigger points. e.g.&nbsp;zooming in to pieces of an image, pan-to and scale-by</p>
-<pre><code>[@cr-thing]{pan-to=”70%,-10%” scale-by=”2”}</code></pre>
-<p>💡 Use the progression tracker (<code>crProgressBlock</code> OJS variable) in code to change the images as the user scrolls.</p>
-<p>🔗 <a href="https://github.com/andrewpbray/gg-close-read">Example</a></p>
-<hr>
+<section id="counterarguments" class="level2">
+<h2 class="anchored" data-anchor-id="counterarguments">Counterarguments</h2>
+<p>Just to try to anticipate a few of these…</p>
+<blockquote class="blockquote">
+<p>It’s still a global mapping when it’s inside the <code>ggplot()</code> function.</p>
+</blockquote>
+<p>Sure. But I see this particular inheritance confusion <strong>SO</strong> frequently among new users that it’s clear something isn’t being understood. My guess is that this makes the global mapping look like it’s on the same “level” as the local ones, since they are both inside one level of function.</p>
+<blockquote class="blockquote">
+<p>The data and the mapping are the two <em>required</em> elements, that’s why they both belong in the <code>ggplot()</code> function.</p>
+</blockquote>
+<p>Required in what sense? For the code to run without error you only need the dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For an interesting plot of any kind, you’d need the mapping <em>and</em> the geometry - nobody is proposing putting <code>geom_*()</code> inside of <code>ggplot()</code> so I don’t see why <code>aes()</code> should be any different.</p>
+<blockquote class="blockquote">
+<p>I’m used to it that way so it looks right.</p>
+</blockquote>
+<p>Same, friend, same.</p>
+<p>I’ll probably be stuck in Option A for a while due to muscle memory - but I’m going to try out Option C in my teaching materials going forward and see how that goes!</p>
 
 
 </section>
