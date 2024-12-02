@@ -10,7 +10,7 @@ website:
   navbar:
     right:
       - icon: type-bold
-        href: https://bsky.app/profile/kellybodwin.bsky.social
+        href: https://bsky.app/profile/kellybodwin.com
       - icon: mastodon
         href: https://fosstodon.org/@kellybodwin
       - icon: linkedin
