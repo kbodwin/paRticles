@@ -9,6 +9,8 @@ website:
   title: "paRticles"
   navbar:
     right:
+      - icon: type-bold
+        href: https://bsky.app/profile/kellybodwin.bsky.social
       - icon: mastodon
         href: https://fosstodon.org/@kellybodwin
       - icon: linkedin
