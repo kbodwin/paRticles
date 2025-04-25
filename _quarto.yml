@@ -20,6 +20,6 @@ website:
 
 format:
   html:
-    theme: pulse
+    theme: [pulse, custom.scss]
     css: styles.css
 
