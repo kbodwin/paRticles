@@ -20,7 +20,44 @@ Specifically, the thing that keeps cropping up that I haven't been able to answe
 
 [This blog post from Albert Rapp](https://albert-rapp.de/posts/03_writing_versatile_fcts/03_writing_versatile_fcts) is excellent pre-reading. 
 
-Let's try to figure this out once and for all.
+## tl;dr
+
+By request, I'm putting the final conclusions up front here for easy reference.
+
+![](https://media4.giphy.com/media/Zsxh9Cbq7VCy4/giphy.gif?cid=6c09b9520g12equqlkshk2pj8igt3zf8drgbbileoa6cfjrx&ep=v1_gifs_search&rid=giphy.gif&ct=g)
+
+**To `map()` over unquoted names:**
+
+The trick here is you need `quos()` to keep `map()` from triggering the unquoted code, and then you need tunneling (`{{x}}`) in the anonyous function as you would in any function:
+
+```{r}
+#| eval: false
+map(quos(c(vs, am, gear, carb)),
+    \(x) some_function(mtcars, {{x}}))
+```
+
+
+**To pass the dots (`...`) into `across()`:**
+
+First you need `enquos(...)` to defuse the dots. 
+
+The sneaky bit in this one is that `across()` wants a vector of unquoted column names to use, and `enquos()` returns a list.
+
+So, we splice the list into separate arguments with `!!!` and re-concatenate them with `c()`.
+
+```{r}
+#| eval: false
+do_stuff <- fucntion(data, ...) {
+    
+    args <- enquos(...)
+
+    data |>
+        summarize(across(c(!!!args), some_function))
+
+}
+```
+
+Read on to see an example, with the many things I tried that **didn't** work, why they didn't work, and how I fixed it.
 
 ## Set the scene
 
