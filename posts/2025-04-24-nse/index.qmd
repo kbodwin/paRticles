@@ -371,7 +371,7 @@ count_ones <- function(data, ...) {
   
   args <- enquos(...)
   
-  mtcars |>
+  data |>
     summarize(
       across(c(!!!args),
             ~sum(.x == 1)
