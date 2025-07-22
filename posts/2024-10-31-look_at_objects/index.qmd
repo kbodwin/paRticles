@@ -106,7 +106,7 @@ My problem here is simply that I don't love `glimpse()`... if I'm verifying a pi
 Googling around lead me to `textreadr::peek()`, which seems to be exactly that: 
 
 ```{r}
-# remotes::install("trinker/textreadr")
+# remotes::install_github("trinker/textreadr")
 library(textreadr)
 
 penguins %>%

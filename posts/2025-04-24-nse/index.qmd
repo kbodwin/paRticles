@@ -18,7 +18,7 @@ I'm doing some mentoring for [Posit Academy](https://posit.co/products/enterpris
 
 Specifically, the thing that keeps cropping up that I haven't been able to answer in a satisfying way is **iterating through unquoted input**.
 
-[This blog post from Albert Rapp](https://albert-rapp.de/posts/03_writing_versatile_fcts/03_writing_versatile_fcts) is excellent pre-reading. 
+[This blog post from Albert Rapp](https://albert-rapp.de/posts/03_writing_versatile_fcts/03_writing_versatile_fcts) is excellent pre-reading.
 
 ## tl;dr
 
@@ -36,23 +36,22 @@ map(quos(c(vs, am, gear, carb)),
     \(x) some_function(mtcars, {{x}}))
 ```
 
-
 **To pass the dots (`...`) into `across()`:**
 
-First you need `enquos(...)` to defuse the dots. 
+~~First you need `enquos(...)` to defuse the dots.~~
 
-The sneaky bit in this one is that `across()` wants a vector of unquoted column names to use, and `enquos()` returns a list.
+~~The sneaky bit in this one is that `across()` wants a vector of unquoted column names to use, and `enquos()` returns a list.~~
 
-So, we splice the list into separate arguments with `!!!` and re-concatenate them with `c()`.
+~~So, we splice the list into separate arguments with `!!!` and re-concatenate them with `c()`.~~
+
+NOPE turns out there's an easy pass here:
 
 ```{r}
 #| eval: false
 do_stuff <- fucntion(data, ...) {
-    
-    args <- enquos(...)
 
     data |>
-        summarize(across(c(!!!args), some_function))
+        summarize(across(c(...), some_function))
 
 }
 ```
@@ -86,10 +85,9 @@ count_ones <- function(data, var) {
 count_ones(mtcars, vs)
 ```
 
-Fabulous.  We could clean this output up a bit, but we won't, because lazy.
+Fabulous. We could clean this output up a bit, but we won't, because lazy.
 
 So, the question is, what if I want to do this to multiple columns at once?
-
 
 ## Option 1: mapping
 
@@ -107,31 +105,30 @@ map(c("vs", "am", "gear", "carb"),
     \(x) count_ones(mtcars, !!sym(x)))
 ```
 
-It's not terrible but the `!!sym(x)` is far from intuitive.  I always read `!!` as "access the information stored in" and `sym` as "turn this from a string to a name".  So, it kind of makes sense - we hand a string to `count_ones()` but first we say "Don't use this string, instead access the information in the name of the string."
+It's not terrible but the `!!sym(x)` is far from intuitive. I always read `!!` as "access the information stored in" and `sym` as "turn this from a string to a name". So, it kind of makes sense - we hand a string to `count_ones()` but first we say "Don't use this string, instead access the information in the name of the string."
 
-I'm still convinced there's a better way, though.  Or at least, a different way.
+I'm still convinced there's a better way, though. Or at least, a different way.
 
 What I want to do is find a way to "freeze" the unquoted variable names so they can be passed into `count_ones()`.
 
-My first thought was to use `quos()`.  Here's now I understand these functions:
+My first thought was to use `quos()`. Here's now I understand these functions:
 
-* `quo()` = freeze this one unquoted thing
+-   `quo()` = freeze this one unquoted thing
 
-* `quos()` = freeze this vector of unquoted things
+-   `quos()` = freeze this vector of unquoted things
 
-* `enquo()` = freeze this unquoted function argument
+-   `enquo()` = freeze this unquoted function argument
 
-* `enquos()` = frees this vector of unquoted function arguments
-
+-   `enquos()` = frees this vector of unquoted function arguments
 
 ```{r}
 map(quos(c(vs, am, gear, carb)),
     \(x) count_ones(mtcars, x))
 ```
 
-Wait, this is great!  The error is being triggered in `sum()` inside of `count_ones()`, not inside of `map()`. So we did freeze it.
+Wait, this is great! The error is being triggered in `sum()` inside of `count_ones()`, not inside of `map()`. So we did freeze it.
 
-The error message suggests that I need to use `!!` inside of `count_ones()` to "unfreeze".  I'm skeptical, because I don't want to unfreeze `x`; I want to access the name `vs`.  Also my goal is not to modify that function.  
+The error message suggests that I need to use `!!` inside of `count_ones()` to "unfreeze". I'm skeptical, because I don't want to unfreeze `x`; I want to access the name `vs`. Also my goal is not to modify that function.
 
 Instead I think this might just be a missed tunneling, so that the frozen column names get passed through my anonymous function.
 
@@ -139,7 +136,6 @@ Instead I think this might just be a missed tunneling, so that the frozen column
 map(quos(c(vs, am, gear, carb)),
     \(x) count_ones(mtcars, {{x}}))
 ```
-
 
 Dang I really thought that would work, but it appears that by using `quos()`, I've accidentally frozen the whole vector together and counted everything in all columns. Which, honestly, is kind of cool - but not what I meant to do.
 
@@ -151,21 +147,20 @@ Let me take a look a this output:
 quos(c(vs, am, gear, carb))
 ```
 
-Okay so it froze the whole expression.  Maybe we just don't want the `c()`, because `quos()` is already concatenating?
+Okay so it froze the whole expression. Maybe we just don't want the `c()`, because `quos()` is already concatenating?
 
 ```{r}
 quos(vs, am, gear, carb)
 ```
 
-This is promising!  A list of quosures is what we want!
-
+This is promising! A list of quosures is what we want!
 
 ```{r}
 map(quos(vs, am, gear, carb),
     \(x) count_ones(mtcars, {{x}}))
 ```
-![I am pleased with this solution.](https://media.tenor.com/aMt8y3umPPAAAAAM/will-smith-victory.gif)
 
+![I am pleased with this solution.](https://media.tenor.com/aMt8y3umPPAAAAAM/will-smith-victory.gif)
 
 ## Option 2: Pass the dots
 
@@ -201,8 +196,8 @@ count_ones <- function(data, ...) {
 
 count_ones(mtcars, vs, am, gear, carb)
 ```
-The tidy approach to doing something to many columns is to use `across()`:
 
+The tidy approach to doing something to many columns is to use `across()`:
 
 ```{r}
 
@@ -214,9 +209,7 @@ The tidy approach to doing something to many columns is to use `across()`:
 
 ```
 
-
 But inside of a function, this fails:
-
 
 ```{r}
 count_ones <- function(data, ...) {
@@ -231,9 +224,28 @@ count_ones <- function(data, ...) {
 count_ones(mtcars, vs, am, gear, carb)
 ```
 
+::: callout-note
+*Addendum after the fact...*
+
+When this post made the rounds on social media, I was informed that the best solution is *almost* the above - I just shouldn't have removed the `c()` around the variables. That is, the **best solution** to this problem is:
+
+```{r}
+count_ones <- function(data, ...) {
+  
+  mtcars |>
+    summarize(
+      across(c(...),
+            ~sum(.x == 1)
+    ))
+}
+
+count_ones(mtcars, vs, am, gear, carb)
+```
+:::
+
 I surmise this is an arguments problem: `across()` expects a single argument, which is a vector of the column names, while the dots are passing the inputs along as four separate arguments.
 
-My first instinct was to use `dots_list()` to smush the dots inputs into a single list object to hand to `across()`.  But this fails for perhaps predictable reasons:
+My first instinct was to use `dots_list()` to smush the dots inputs into a single list object to hand to `across()`. But this fails for perhaps predictable reasons:
 
 ```{r}
 count_ones <- function(data, ...) {
@@ -242,7 +254,7 @@ count_ones <- function(data, ...) {
   
   mtcars |>
     summarize(
-      across(args,
+      across(c(args),
             ~sum(.x == 1)
     ))
 
@@ -254,7 +266,6 @@ count_ones(mtcars, vs, am, gear, carb)
 Ye Olde NSE strikes again: `dots_list()` is triggering the unquoted names to be evaluated, so `vs` not found.
 
 Well, we did just learn that `quos()` will get us a list of quosures, so let's hit the dots with that:
-
 
 ```{r}
 count_ones <- function(data, ...) {
@@ -272,7 +283,7 @@ count_ones <- function(data, ...) {
 count_ones(mtcars, vs, am, gear, carb)
 ```
 
-Alright, so `across()` can't handle a list.  One thing we could definitely do at this point is just move our `map()` approach to inside of the function:
+Alright, so `across()` can't handle a list. One thing we could definitely do at this point is just move our `map()` approach to inside of the function:
 
 ```{r}
 #| eval: false
@@ -292,7 +303,6 @@ count_ones(mtcars, vs, am, gear, carb)
 Friends. I did not mean to put `count_ones` inside of itself. The above code fully crashed my R Session, with this delightful error.
 
 ![Please enjoy my hilarious failure.](error.png)
-
 
 ![Tunneling has consequences.](https://y.yarn.co/90141801-b717-47b2-9498-09ba42d22fa5_text.gif)
 
@@ -317,8 +327,6 @@ count_ones <- function(data, ...) {
 count_ones(mtcars, vs, am, gear, carb)
 ```
 
-
-
 I'm tired and this is getting long ...but I still really want to defeat the `across()` problem, because the `...` + `across()` seems like an extremely handy construct.
 
 There is one "free" solution, which is to just reduce our dataset to the columns we care about, and then tell `across()` to apply to `everything()`:
@@ -338,9 +346,7 @@ count_ones <- function(data, ...) {
 count_ones(mtcars, vs, am, gear, carb)
 ```
 
-
-This would probably be fine for every use case I can think of.  But it's not *technically* the same as using `across()` directly, because if you use `across()` inside `mutate()` it will keep all the other columns.
-
+This would probably be fine for every use case I can think of. But it's not *technically* the same as using `across()` directly, because if you use `across()` inside `mutate()` it will keep all the other columns.
 
 ### Exhibit A:
 
@@ -353,7 +359,6 @@ This would probably be fine for every use case I can think of.  But it's not *te
   head()
 
 ```
-
 
 ### Exhibit B:
 
@@ -368,17 +373,17 @@ This would probably be fine for every use case I can think of.  But it's not *te
 
 ```
 
-Team, we gotta crack this so I can go to bed.  Let's take stock:
+Team, we gotta crack this so I can go to bed. Let's take stock:
 
-* We know how to "freeze" the variable names from the dots into a list of quosures with `enquos()`
+-   We know how to "freeze" the variable names from the dots into a list of quosures with `enquos()`
 
-* We need to find a way to pass that information as a *vector* object to `across()`.
+-   We need to find a way to pass that information as a *vector* object to `across()`.
 
 ![](https://y.yarn.co/83edfb01-843c-4a84-bae8-81b2ba0b390c_text.gif)
 
-Since this is a post about punctuation, let's bring in the big guns:  the TRIPLE BANG!!!
+Since this is a post about punctuation, let's bring in the big guns: the TRIPLE BANG!!!
 
-This guy `!!!` is one of my all time favorite tricks.  It lets you turn a list of things into separate function arguments, which is called *splicing*.
+This guy `!!!` is one of my all time favorite tricks. It lets you turn a list of things into separate function arguments, which is called *splicing*.
 
 ```{r}
 args <- quos(vs, am, gear, carb)
@@ -394,14 +399,11 @@ mtcars |>
   head()
 ```
 
-
-The bad news:  What we want here is the *opposite* of splicing: we want our *list* of quosures to become a *vector* of quosures.
+The bad news: What we want here is the *opposite* of splicing: we want our *list* of quosures to become a *vector* of quosures.
 
 The good news: If only we had a function that takes multiple arguments and *concatenates* them into a vector....
 
 ![Actually, c() is for concatenate.](https://media2.giphy.com/media/NFpfxyP7jm1Q4/200w.gif?cid=6c09b95288507gct7uf158ysohurcndij8y7npnn7614ypqj&ep=v1_gifs_search&rid=200w.gif&ct=g)
-
-
 
 ```{r}
 count_ones <- function(data, ...) {
@@ -419,9 +421,8 @@ count_ones <- function(data, ...) {
 count_ones(mtcars, vs, am, gear, carb)
 ```
 
+Boom! It still feels a little annoying to me that we had to *freeze - splice - concatenate*, that feels like too many steps, but I'll take it. I can go to bed unfrustrated!
 
-Boom! It still feels a little annoying to me that we had to *freeze - splice - concatenate*, that feels like too many steps, but I'll take it.   I can go to bed unfrustrated!
-
-Thus ends my stream-of-consciousness journey into NSE.  If you came along with me this far, thanks for hanging out, and let me know if there is any `rlang` trickery that I missed!
+Thus ends my stream-of-consciousness journey into NSE. If you came along with me this far, thanks for hanging out, and let me know if there is any `rlang` trickery that I missed!
 
 ![](https://i.imgur.com/sbTj8UB.gif)
