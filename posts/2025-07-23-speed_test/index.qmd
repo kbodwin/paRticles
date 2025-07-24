@@ -4,7 +4,7 @@ author: "Kelly Bodwin"
 date: "2025-07-23"
 draft: false
 categories: [programming, tutorial]
-image: ""
+image: "speed.jpeg"
 knitr:
   opts_chunk: 
     collapse: true
