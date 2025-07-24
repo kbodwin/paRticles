@@ -9,7 +9,7 @@ website:
   title: "paRticles"
   navbar:
     right:
-      - icon: bluesky
+      - icon: square-bluesky
         href: https://bsky.app/profile/kellybodwin.com
       - icon: mastodon
         href: https://fosstodon.org/@kellybodwin
