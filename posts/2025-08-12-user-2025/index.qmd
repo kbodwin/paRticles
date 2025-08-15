@@ -12,9 +12,9 @@ filters:
 I'm finally decompressing from another wonderful and whirlwind UseR! conference, so I thought I'd share some quick links with everyone!
 
 
-FWIW, I spammed my thoughts throughout the conference [over at BlueSky](https://bsky.app/profile/kellybodwin.com)... sorry not sorry to my followers, I may have gone a bit overboard.
+FWIW, I also spammed my thoughts throughout the conference [over at BlueSky](https://bsky.app/profile/kellybodwin.com).
 
-![](https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnEzczMyNXJkemRrdDR3aWFyY2l0ZWVhNDVxa2xvM3ZybGkwZ205diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/k68QNmNboqOUo/source.gif){width=60%}
+![Sorry not sorry to my followers, I may have gone a bit overboard.](https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnEzczMyNXJkemRrdDR3aWFyY2l0ZWVhNDVxa2xvM3ZybGkwZ205diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/k68QNmNboqOUo/source.gif){width=60%}
 
 
 But, in the interest of a more persistent summary, I figured it might be worth collecting some highlights here!  
@@ -27,12 +27,14 @@ So, don't take the following as the "best" stuff, just what stands out to me rig
 
 ## Top 10 Things I'm Hyped About From User!2025:
 
+![](https://y.yarn.co/8dfa9ff4-3c4b-44f6-bff2-8f3908e1708a_text.gif){width='60%'}
+
 
 ### 10. Getting to share my students' work on `tidyclust` with y'all.
 
 This past year, for the first time, I got to advise some fabulous M.S. students in my department.  Three of them ended up working on contributing new algorithms to `tidyclust`, which was quite an adventure!
 
-* [Mixture models and DBSCAN(](https://github.com/brendad8/tidyclust), by Brendan Callendar
+* [Mixture models and DBSCAN](https://github.com/brendad8/tidyclust), by Brendan Callendar
 
 * [Frequent Itemset Mining](https://github.com/Wander03/tidyclust) by Andrew Kerr
 
@@ -46,7 +48,7 @@ My favorite session at any conference is often the lightning talks!  I love seei
 
 In this one, McCall shared how she modified a plain ggplot to create a very lovely storytelling process for the data.
 
-![](mcall.jpg){width=60%}
+![Peep the greyed out bars and clean annotations!](mcall.jpg){width=60%}
 
 I'd love to have a wrapper package on this approach that streamlines/generalizes her awesome design!
 
@@ -135,11 +137,11 @@ In my opinion, a great Keynote is less about imparting specific information, and
 
 Yani's talk did that beautifully.  I loved how she supplied a structured, well-defined, research-supported way to think about the communities we join and the process of belonging.
 
-![](yani1.jpg){width=60%}
+!["I made a pun in English!" - Yani](yani1.jpg){width=60%}
 
 I particularly loved how she asked us to reflect on moments where we hit milestones in our own communities - when did we feel *welcome* in a community, when did we feel *ownership* of the community, etc.  I think the "ownership" idea is particularly relevant in open-source, where so much of what is build relies on folks giving their blood, sweat, and tears to unpaid and often thankless work. 
 
-![](yani2.jpg){width=60%}
+![I am part of lots of groups... what makes me feel responsible for one?](yani2.jpg){width=60%}
 
 
 ### 2. `ellmer`, `chores`, etc. by Simon Couch and the Posit Squad
@@ -187,3 +189,9 @@ mean(wackyyy)
 
 
 I can't wait to keep expanding this extension, and there was something very special about watching a great student present our work instead of doing it myself. 
+
+---
+
+That's it from me... until Posit Conf next month, that is!
+
+![The hype is real... the jetlag is realer.](https://happinessisyoublog.wordpress.com/wp-content/uploads/2016/02/giphy.gif)
