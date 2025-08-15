@@ -4,7 +4,7 @@ author: "Kelly Bodwin"
 date: "2025-08-16"
 draft: false
 categories: [conf]
-image: "quarto_hex.png"
+image: "logo.png"
 filters: 
   - flourish
 ---
