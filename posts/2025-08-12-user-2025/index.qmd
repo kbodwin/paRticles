@@ -1,0 +1,189 @@
+---
+title: "UseR!2025: My Top 10"
+author: "Kelly Bodwin"
+date: "2025-08-16"
+draft: false
+categories: [conf]
+image: "quarto_hex.png"
+filters: 
+  - flourish
+---
+
+I'm finally decompressing from another wonderful and whirlwind UseR! conference, so I thought I'd share some quick links with everyone!
+
+
+FWIW, I spammed my thoughts throughout the conference [over at BlueSky](https://bsky.app/profile/kellybodwin.com)... sorry not sorry to my followers, I may have gone a bit overboard.
+
+![](https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyNnEzczMyNXJkemRrdDR3aWFyY2l0ZWVhNDVxa2xvM3ZybGkwZ205diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/k68QNmNboqOUo/source.gif){width=60%}
+
+
+But, in the interest of a more persistent summary, I figured it might be worth collecting some highlights here!  
+
+Note that for every 4 talks I went to, there were 12 others that overlapped and so I couldn't.  I know for a fact that I missed some super cool stuff.  Also, *everything* I saw was extremely high quality, shoutout to all the speakers for their incredible projects and well-crafted presentations. 
+
+So, don't take the following as the "best" stuff, just what stands out to me right now:
+
+
+
+## Top 10 Things I'm Hyped About From User!2025:
+
+
+### 10. Getting to share my students' work on `tidyclust` with y'all.
+
+This past year, for the first time, I got to advise some fabulous M.S. students in my department.  Three of them ended up working on contributing new algorithms to `tidyclust`, which was quite an adventure!
+
+* [Mixture models and DBSCAN(](https://github.com/brendad8/tidyclust), by Brendan Callendar
+
+* [Frequent Itemset Mining](https://github.com/Wander03/tidyclust) by Andrew Kerr
+
+* BIRCH, by Jacob Perez
+
+Based on our work, [I put together some thoughts in my presentation](https://kbodwin.github.io/Talks-and-Presentations/UseR_2025/slides.html) about what *algorithmic* and *UI* decisions need to be made before a new method can be build into the `tidyclust` (or `tidymodels`) ecosystem.
+
+### 9. [ggplot storytelling using tricks from McCall Pitcher](https://mccall-pitcher.quarto.pub/storytelling-with-ggplot2-bar-chart-sequence/) 
+
+My favorite session at any conference is often the lightning talks!  I love seeing the quick little "infomercials" of packages or code that solve small interesting problems.
+
+In this one, McCall shared how she modified a plain ggplot to create a very lovely storytelling process for the data.
+
+![](mcall.jpg){width=60%}
+
+I'd love to have a wrapper package on this approach that streamlines/generalizes her awesome design!
+
+
+### 8. R as a "Conductor" of tools, from Simon Urbanek's Keynote
+
+There was a lot of really interesting, meaty content in Simon's Keynote, but what stuck out to me most was his assertion that R doesn't *need* to be best at every task to be the best tool.  
+
+R is and will always be a data-centered language; so it just **feels better** for working with data.  But that doesn't mean you can't use other language tools for, e.g. deep learning.  The open-source-ness of R means that almost anything you can imagine has a bridge package so you can call upon other tools from within R.
+
+To paraphrase the quote as best I can from the notes I jotted down...
+
+> "I believe R is an orchestrator. It's the language that binds your data to all the other tools."
+
+![Cute but confusing illustration by ChatGPT](orchestrator_ai.jpg){width=60%}
+
+### 7. [`hexsession`](https://hexsession.liomys.mx/) by Luis Verde Arregoitia
+
+This is one of those fun little packages that does only one thing, and it's a needed thing, and it does it well.
+
+In this case, `hexsession` creates nice css hoverable display out of hex stickers, e.g.:
+
+
+```{r}
+#| echo: true
+hexsession::make_tile(packages=c("dtplyr", "dbplyr", "duckplyr"))
+```
+
+### 6. [`medley`](https://bryer.org/projects/medley.html) (and `clav`) by Jason Bryer
+
+I picked this for two reasons:  
+
+First, that I'm excited `medley` exists.  I don't think we talk enough about missing data - my students *always* ask me for more content on it! - and I think we focus way too much on interpolation when we do.  The idea of splitting your dataset into subsets by patterns of missingness is lovely and (IMHO) should be the norm unless you have a really defensible reason to interpolate a certain way.
+
+Second, because after this session, Jason and I got to have a super fun nerd whiteboard chat about validating clusters!  His package `clav` implements some common cluster validation metrics, and we both are very interested in how resampling approaches can help us decide on a "best" clustering.
+
+
+
+### 5. [`tinytable`](https://vincentarelbundock.github.io/tinytable/) by Vincent Arel-Bundock and [`tinyplot`](https://grantmcdermott.com/tinyplot/vignettes/intro_tutorial.html) by Grant McDermott
+
+Do you remember those ads that said 
+
+> "There are some things money can't buy. For everything else, there's MasterCard."
+
+This is how I feel about these two packages.  There are some things that need *the* most developed package for that specific task.  For everything else, there's the tinies.
+
+For making professional, complex, camera-ready tables in HTML, I personally believe `gt` is the best tool.  For any other table-making task (e.g. pdf tables, or quick ones for your own exploration), I believe I'll be swapping to `tinytable`. It's somewhat quicker syntax to achieve similar tasks, like conditional cell highlighting, and I love that it has options for docx and pdf output!
+
+```{r}
+#| echo: true
+
+library(tinytable)
+x <- mtcars[1:4, 1:5]
+tt(x) |>
+  print("markdown")
+```
+
+
+Similarly, `ggplot` is king for visualization and I doubt anyone will argue much with me on that... but I admit I still pull out base graphics when I need to quickly look at something, and many `tidyverse` devotees I know still might use base in intro classes to avoid too much abstraction. To me `tinyplot` is the better option in those moments - it provides the simplicity and shortcuts of base graphics but with much nicer (and often `ggplot`-like) appearance.
+
+
+### 4. [`parsermd`](https://rundel.github.io/parsermd/index.html) by Colin Rundel
+
+This package (pronounced "parser-md" not "parse-Rmd") has existed for a while, but is now being released with Quarto support.
+
+Basically, it's a way to parse through the source text of your .qmd document and get back an easy reference to each element.
+
+```{r}
+library(parsermd)
+
+parse_qmd("index.qmd") |>
+  as_tibble() |>
+  head() |> 
+  as_ast()
+
+```
+
+
+The use case I'm excited about is creating class materials - I can use one source qmd to generate a student version and an instructor/solutions version.
+
+Can't wait to use this to re-write the [`versions` functions from `templar`](https://github.com/r-for-educators/templar) (which I never truly released anyways, just used myself) in much cleaner and easier to use form!!!!
+
+### 3. "We R Together" Keynote by Yanina Bellini Saibene
+
+In my opinion, a great Keynote is less about imparting specific information, and more about leaving your audience feeling excited or inspired.
+
+Yani's talk did that beautifully.  I loved how she supplied a structured, well-defined, research-supported way to think about the communities we join and the process of belonging.
+
+![](yani1.jpg){width=60%}
+
+I particularly loved how she asked us to reflect on moments where we hit milestones in our own communities - when did we feel *welcome* in a community, when did we feel *ownership* of the community, etc.  I think the "ownership" idea is particularly relevant in open-source, where so much of what is build relies on folks giving their blood, sweat, and tears to unpaid and often thankless work. 
+
+![](yani2.jpg){width=60%}
+
+
+### 2. `ellmer`, `chores`, etc. by Simon Couch and the Posit Squad
+
+Despite the fact that Hadley Wickham's Keynote was (as always) poignant and hilarious, I hadn't yet been sold on using `ellmer` et al in my own workflow.
+
+However, Simon Couch's talk on his `chores` package has me sold.  It's a clean, IDE-plugin interface for getting LLMs to do tiny tedious tasks, such as writing Roxygen documentation.  I think of it as "`usethis` on steroids" - it automates some of the obnoxious formatting needed for certain programming jobs, and then takes it a step further by fleshing out a little of the content as well.
+
+One open question though: What shall we call the Posit team's collection of LLM helpers?  `#couchverse` has been proposed...
+
+### 1. [`flourish` by Visruth Srimath Kandali and me](https://github.com/kbodwin/flourish)
+
+Total humblebrag here, but I have to be honest about what I was most excited about.
+
+This year, I've been working with Visruth, an undergraduate (!) who is already a better programmer than all of us faculty.  Together we've build `flourish`, a Quarto extension that's a successor to the `flair` R package, for highlighting source code in a rendered doc.
+
+Visruth did a great job [in his talk](https://www.visruth.com/flourish-talk#/title-slide) at showing the many many possibilities offered by `flourish`... including some truly ridiculous css formatting!
+
+```
+#| flourish:
+#| - target:
+#|      - "wackyyy"
+#|      - style:
+#|            - "background-color: #bd8c51;"
+#|            - "text-decoration: line-through;"
+#|            - "-webkit-text-stroke: 1px black;"
+#|            - "filter: blur(1px);"
+#|            - "font-family: 'Brush Script MT', cursive;"
+```
+
+```{r}
+#| echo: true
+#| flourish:
+#| - target:
+#|      - "wackyyy"
+#|      - style:
+#|            - "background-color: #bd8c51;"
+#|            - "text-decoration: line-through;"
+#|            - "-webkit-text-stroke: 1px black;"
+#|            - "filter: blur(1px);"
+#|            - "font-family: 'Brush Script MT', cursive;"
+wackyyy <- 1:10
+mean(wackyyy)
+```
+
+
+I can't wait to keep expanding this extension, and there was something very special about watching a great student present our work instead of doing it myself. 
